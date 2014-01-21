@@ -4,7 +4,7 @@ load 'strings'
 coclass'vocflash'
 coinsert'jhs'
 
-DEBUG=:1
+DEBUG=:0
 
 NB. http://www.jsoftware.com/docs/help701/phrases/random_numbers.htm
 shuffle=: {~ ?~@#
@@ -38,17 +38,18 @@ html =: 0 : 0
 '<html>'
 '<form method="post">'
 '<h4>',Response,'</h4>'
-'<h1 title="',Help,'">',Name,'</h1>'
+'<h1>',Name,'</h1>'
+
 '<input type="hidden" name="answer" value="',(": Answer),'"/">'
 > vocOption each Choices
 '<br><input type="submit">'
+'<a href="#" onClick="alert(this.title)" title="',Help,'">hint</a>'
 '</form>'
 '</html>'
 )
 
 Welcome =: 0 : 0
 Welcome, please select item that is defined by the statement below.
-Hover over the description for help
 )
 
 showForm =: 3 : 0
