@@ -81,3 +81,20 @@ jev_get=: 3 : 0
 if. DEBUG do. checkLatestScript'' end.
 showForm _1
 )
+
+NB. these are defined in j8, but apparently not j7 linux build
+gsrchead=: toCRLF 0 : 0
+HTTP/1.1 200 OK
+Server: JHS
+Last-Modified: Mon, 01 Mar 2010 00:23:24 GMT
+Accept-Ranges: bytes
+Content-Length: <LENGTH>
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: <TYPE>
+
+)
+
+gsrcf=: 4 : 0
+htmlresponse y,~gsrchead rplc '<TYPE>';x;'<LENGTH>';":#y
+)
