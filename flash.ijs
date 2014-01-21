@@ -4,7 +4,7 @@ load 'strings'
 coclass'vocflash'
 coinsert'jhs'
 
-DEBUG=:0
+DEBUG=:1
 
 NB. http://www.jsoftware.com/docs/help701/phrases/random_numbers.htm
 shuffle=: {~ ?~@#
@@ -72,9 +72,8 @@ jev_post_raw=: 3 : 0
 NB. need to parse it manually and set proper locale val
 NV_jhs_=:parse_jhs_ NV_jhs_
 Answer=. ". getv'answer'
-ChoiceText =. getv'choice'
-if. 0 = # ChoiceText do. Choice=. 0 else. Choice=. ". ChoiceText end.
-showForm (Answer*(-. (Answer=Choice)))
+Choice =. ". '0',getv'choice'
+showForm Answer*(Answer -.@= Choice)
 )
 
 jev_get=: 3 : 0
