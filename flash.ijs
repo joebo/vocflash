@@ -34,6 +34,11 @@ vocOption=: 3 : 0
 )
 
 
+NB. basic encode function
+htmlencode =: 3 : 0
+y rplc '<';'&lt;';'>';'&gt;';'"';'&quot;'
+)
+
 html =: 0 : 0
 '<html>'
 '<form method="post">'
@@ -43,7 +48,7 @@ html =: 0 : 0
 '<input type="hidden" name="answer" value="',(": Answer),'"/">'
 > vocOption each Choices
 '<br><input type="submit">'
-'<a href="#" onClick="alert(this.title)" title="',Help,'">hint</a>'
+'<a href="#" onClick="alert(this.title)" title="',(htmlencode Help),'">hint</a>'
 '</form>'
 '</html>'
 )
